@@ -16,15 +16,15 @@ function urlParser($urlstring) {
         $path_parts = pathinfo($path);
         $hash = parse_url($urlstring, PHP_URL_FRAGMENT);
 
-        null !== $scheme ? var_dump("scheme (" . $scheme . ")") : "";
-        null !== $host ? var_dump("host (" . $host . ")") : "";
-        null !== $host ? var_dump("subdomain (" . $hostparts[0] . ")") : "";
-        null !== $host ? var_dump("domain (" . $hostparts[1] . ")") : "";
-        null !== $host ? var_dump("top level domain (" . $topleveldomain . ")") : "";
-        null !== $path || $query ? var_dump("resource (" . $path . "?" . $query . ")") : "";
+        is_null($scheme) ?: var_dump("scheme (" . $scheme . ")");
+        is_null($host) ?: var_dump("host (" . $host . ")",
+        			   "subdomain (" . $hostparts[0] . ")",
+				   "domain (" . $hostparts[1] . ")",
+        			   "top level domain (" . $topleveldomain . ")");
+        is_null($path) || is_null($query) ?: var_dump("resource (" . $path . "?" . $query . ")");
         isset($path_parts['extension']) ? var_dump("file suffix/extension (" . $path_parts['extension'] . ")") : "";
-        null !== $query ? var_dump("query (" . $query . ")") : "";
-        null !== $hash ? var_dump("hash (" . $hash . ")") : "";
+        is_null($query) ?: var_dump("query (" . $query . ")");
+        is_null($hash) ?: var_dump("hash (" . $hash . ")");
 }
 
 //if command run: php url_parser.php -u <url>
