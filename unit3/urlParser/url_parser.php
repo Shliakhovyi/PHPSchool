@@ -22,7 +22,7 @@ function urlParser($urlstring) {
 				   "domain (" . $hostparts[1] . ")",
         			   "top level domain (" . $topleveldomain . ")");
         is_null($path) || is_null($query) ?: var_dump("resource (" . $path . "?" . $query . ")");
-        isset($path_parts['extension']) ? var_dump("file suffix/extension (" . $path_parts['extension'] . ")") : "";
+        !isset($path_parts['extension']) ?: var_dump("file suffix/extension (" . $path_parts['extension'] . ")");
         is_null($query) ?: var_dump("query (" . $query . ")");
         is_null($hash) ?: var_dump("hash (" . $hash . ")");
 }
@@ -31,7 +31,7 @@ function urlParser($urlstring) {
 if (isset($url["u"])) {
 	$urlstring = $url["u"];
 	urlParser($urlstring);
-//command run: url_parser.php --url=<url>
+//command run: php url_parser.php --url=<url>
 } elseif (isset($url["url"])) {
 	$urlstring = $url["url"];
 	urlParser($urlstring);
