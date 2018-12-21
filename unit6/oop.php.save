@@ -1,0 +1,11 @@
+<?php
+
+class Student {
+	private $firstname;
+	private $lastname;
+	private $gender;
+	private $status;
+	private $gpa;
+
+	__construct
+}
