@@ -73,9 +73,7 @@ class Student
      */
     private function setGpa($gpa)
     {
-        $gpaIncrement = '';
-        $gpaIncrement += $gpa;
-        $this->gpa = $gpaIncrement;
+        $this->gpa = round($gpa, 1);
     }
 
     /**
@@ -127,7 +125,6 @@ class Student
 
 $obj = new Student('name', 'last', 'male', 'seniour');
 
-$obj->studyTime(10);
 $obj->studyTime(10);
 
 $obj->showMyself();
