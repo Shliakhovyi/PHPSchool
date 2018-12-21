@@ -6,7 +6,7 @@ class Student
     private $lastname;
     private $gender;
     private $status;
-    private $gpa;
+    private $gpa = 0;
 
     public function __construct($firstname, $lastname, $gender, $status)
     {
@@ -71,9 +71,9 @@ class Student
     /**
      * @param mixed $gpa
      */
-    private function setGpa($gpa)
+    private function addGpa($gpa)
     {
-        $this->gpa = round($gpa, 1);
+        $this->gpa += round($gpa, 1);
     }
 
     /**
@@ -81,7 +81,11 @@ class Student
      */
     private function getGpa()
     {
-        return $this->gpa;
+        if ($this->gpa >= 4) {
+            return $this->gpa = 4.0;
+        } else {
+            return $this->gpa;
+        }
     }
 
     /**
@@ -108,26 +112,35 @@ class Student
         return $this->status;
     }
 
+
+    /**
+     * @print student info
+     */
     public function showMyself() {
         var_export("Firstname: " . $this->getFirstname() . PHP_EOL . "Lastname: " . $this->getLastname() . PHP_EOL . "Gender: " . $this->getGender() . PHP_EOL . "Status: " . $this->getStatus() . PHP_EOL . "GPA: " . $this->getGpa() . PHP_EOL);
     }
 
+
+    /**
+     * @param $study_time
+     */
     public function studyTime($study_time) {
         $gpaTemp = 0;
         $gpaTemp += log($study_time);
         if ($gpaTemp <= 4.0) {
-            $this->setGpa($gpaTemp);
+            $this->addGpa($gpaTemp);
         } else {
-            $this->setGpa('4.0');
+            $this->addGpa('4.0');
         }
     }
 }
 
-$studentOne = new Student('name', 'last', 'male', 'seniour');
+$studentOne = new Student('Ivan', 'Ivanov', 'male', 'seniour');
 
-$obj->studyTime(10);
+$studentOne->studyTime(2);
+$studentOne->studyTime(8);
 
-$obj->showMyself();
+$studentOne->showMyself();
 
 
 
