@@ -123,7 +123,7 @@ class Student
     }
 }
 
-$obj = new Student('name', 'last', 'male', 'seniour');
+$studentOne = new Student('name', 'last', 'male', 'seniour');
 
 $obj->studyTime(10);
 
