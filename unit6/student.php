@@ -117,7 +117,9 @@ class Student
      * @print student info
      */
     public function showMyself() {
-        var_export("Firstname: " . $this->getFirstname() . PHP_EOL . "Lastname: " . $this->getLastname() . PHP_EOL . "Gender: " . $this->getGender() . PHP_EOL . "Status: " . $this->getStatus() . PHP_EOL . "GPA: " . $this->getGpa() . PHP_EOL);
+        var_export("Firstname: " . $this->getFirstname() . PHP_EOL . "Lastname: " . $this->getLastname()
+            . PHP_EOL . "Gender: " . $this->getGender() . PHP_EOL . "Status: " . $this->getStatus() . PHP_EOL . "GPA: "
+            . $this->getGpa() . PHP_EOL);
     }
 
 
@@ -135,13 +137,24 @@ class Student
     }
 }
 
-$studentOne = new Student('Ivan', 'Ivanov', 'male', 'seniour');
+$studentOne = new Student('Mike', 'Barnes', 'male', 'freshman');
+$studentOne->studyTime(100);
 
-$studentOne->studyTime(2);
-$studentOne->studyTime(8);
+$studentTwo = new Student('Jim', 'Nickerson', 'male', 'sophomore');
+$studentTwo->studyTime(21);
 
-$studentOne->showMyself();
+$studentThree = new Student('Jack', 'Indabox', 'male', 'junior');
+$studentThree->studyTime(12);
 
+$studentFour = new Student('Jane', 'Miller', 'female', 'senior');
+$studentFour->studyTime(35);
 
+$studentFive = new Student('Mary', 'Scott', 'female', 'senior');
+$studentFive->studyTime(15);
 
+$studentList = array($studentOne, $studentTwo, $studentThree, $studentFour, $studentFive);
+
+foreach ($studentList as $value) {
+    $value->showMyself();
+}
 
