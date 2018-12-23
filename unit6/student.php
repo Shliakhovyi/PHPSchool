@@ -158,3 +158,12 @@ foreach ($studentList as $value) {
     $value->showMyself();
 }
 
+$studentOne->studyTime(1);
+$studentTwo->studyTime(1.7);
+$studentThree->studyTime(0.7);
+$studentFour->studyTime(5);
+$studentFive->studyTime(16.7);
+
+foreach ($studentList as $value) {
+    $value->showMyself();
+}
