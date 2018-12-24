@@ -16,6 +16,37 @@ class Student
         $this->setStatus($status);
     }
 
+    public function __destruct()
+    {
+        print "Destruct " . __CLASS__ . PHP_EOL;
+    }
+
+    public function __toString()
+    {
+        return "Firstname: " . $this->getFirstname() . PHP_EOL . "Lastname: " . $this->getLastname()
+            . PHP_EOL . "Gender: " . $this->getGender() . PHP_EOL . "Status: " . $this->getStatus() . PHP_EOL . "GPA: "
+            . $this->getGpa() . PHP_EOL;
+    }
+
+    public function __invoke($x)
+    {
+        var_dump("__invoke implemented for using obj as function. Print argument: " . $x);
+    }
+
+    public function __debugInfo()
+    {
+        return [
+            'Firstname' => $this->firstname,
+            'Lastname' => $this->lastname,
+        ];
+    }
+
+    public function __call($name, $arguments)
+    {
+        echo "Call to undefined method in class Student. Method: '$name', argument: "
+            . implode(', ', $arguments) . PHP_EOL;
+    }
+
     /**
      * @param mixed $firstname
      */
@@ -53,10 +84,16 @@ class Student
      */
     private function setGender($gender)
     {
-        if ($gender == 'male') {
-            $this->gender = 'male';
-        } else {
-            $this->gender = 'female';
+        try {
+            if ($gender == 'male') {
+                $this->gender = 'male';
+            } elseif ($gender =='female') {
+                $this->gender = 'female';
+            } else {
+                throw new Exception();
+            }
+        } catch (Exception $e) {
+            print "Select proper gender: male or female" . PHP_EOL . PHP_EOL;
         }
     }
 
@@ -93,14 +130,20 @@ class Student
      */
     private function setStatus($status)
     {
-        if ($status == 'freshman') {
-            $this->status = 'freshman';
-        } elseif ($status == 'sophomore') {
-            $this->status = 'sophomore';
-        } elseif ($status == 'junior') {
-            $this->status = 'junior';
-        } else {
-            $this->status = 'seniour';
+        try {
+            if ($status == 'freshman') {
+                $this->status = 'freshman';
+            } elseif ($status == 'sophomore') {
+                $this->status = 'sophomore';
+            } elseif ($status == 'junior') {
+                $this->status = 'junior';
+            } elseif ($status == 'senior') {
+                $this->status = 'senior';
+            } else {
+                throw new Exception();
+            }
+        } catch (Exception $e) {
+            print "Select proper status" . PHP_EOL . PHP_EOL;
         }
     }
 
@@ -117,9 +160,9 @@ class Student
      * @print student info
      */
     public function showMyself() {
-        var_export("Firstname: " . $this->getFirstname() . PHP_EOL . "Lastname: " . $this->getLastname()
+        print_r("Firstname: " . $this->getFirstname() . PHP_EOL . "Lastname: " . $this->getLastname()
             . PHP_EOL . "Gender: " . $this->getGender() . PHP_EOL . "Status: " . $this->getStatus() . PHP_EOL . "GPA: "
-            . $this->getGpa() . PHP_EOL);
+            . $this->getGpa() . PHP_EOL . PHP_EOL);
     }
 
 
