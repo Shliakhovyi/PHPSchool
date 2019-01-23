@@ -1,0 +1,2 @@
+SELECT p.id, p.category_id, p.name, p.price, p.description, p2.name as related_name, p2.price as related_price FROM products as p 
+JOIN products as p2 ON p.id = p2.related_id;
