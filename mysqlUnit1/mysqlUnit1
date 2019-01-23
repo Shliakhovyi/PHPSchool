@@ -1,0 +1,21 @@
+Start container/mysql:
+-docker-compose up -d
+-docker-compose exec mysql bash
+>mysql -uroot -proot
+>use catalog;
+
+
+HOMETASK SQL queries:
+
+1. CREATE TABLE product_descriptions (
+	product_id INT(11) NOT NULL,
+	lang CHAR(3) NOT NULL,
+	name VARCHAR(255),
+	description TEXT,
+	PRIMARY KEY (product_id)
+	) ENGINE = InnoDB; 
+
+2. INSERT INTO product_descriptions (product_id, lang, name, description) 
+SELECT id, 'eng', name, description FROM products;
+
+3. ALTER TABLE products DROP COLUMN name, DROP COLUMN description;
