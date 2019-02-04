@@ -1,7 +1,10 @@
 <?php
 
-require_once '../Autoload/vendor/autoload.php';
+//use App\User;
+use App\Employee;
 
-$user = new User();
+require_once __DIR__ . '/vendor/autoload.php';
+
+$user = new \App\User();
 
 $employee = new Employee();
